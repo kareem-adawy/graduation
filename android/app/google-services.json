@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "525746289599",
+    "project_id": "asro-shop-getxx",
+    "storage_bucket": "asro-shop-getxx.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:525746289599:android:8c1239c298cd3b701dbf0a",
+        "android_client_info": {
+          "package_name": "com.example.mansour_udemy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "525746289599-auidhtcuefpebb3p6qll32osbhv8h64q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVV-ZVTWqDUyxgHO849d3q8_WvzJtIHVk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "525746289599-auidhtcuefpebb3p6qll32osbhv8h64q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
