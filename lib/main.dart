@@ -7,7 +7,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:mansour_udemy/Amazon%20Shop/routes/routes.dart';
 
 import 'Amazon Shop/Utils/my_string.dart';
-
+import 'Amazon Shop/language/localization.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,15 +21,13 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       locale: Locale(GetStorage().read<String>("lang").toString()),
-    //  translations: LocaliztionApp(),
+      translations: LocaliztionApp(),
       fallbackLocale: Locale(ene),
-      initialRoute: FirebaseAuth.instance.currentUser!= null ||
-          GetStorage().read<bool>("auth") == true
+      initialRoute: FirebaseAuth.instance.currentUser != null ||
+              GetStorage().read<bool>("auth") == true
           ? AppRoutes.mainScreen
           : AppRoutes.welcome,
       getPages: AppRoutes.routes,
     );
   }
 }
-
-

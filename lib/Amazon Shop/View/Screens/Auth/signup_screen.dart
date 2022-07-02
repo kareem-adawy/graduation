@@ -6,25 +6,23 @@ import 'package:mansour_udemy/Amazon%20Shop/Utils/my_string.dart';
 import 'package:mansour_udemy/Amazon%20Shop/View/Widgets/CheckWidget.dart';
 
 class SignupScreen extends StatelessWidget {
-   SignupScreen({Key? key}) : super(key: key);
+  SignupScreen({Key? key}) : super(key: key);
 
-   final fromKey = GlobalKey<FormState>();
+  final fromKey = GlobalKey<FormState>();
 
-   final TextEditingController nameController = TextEditingController();
-   final TextEditingController emailController = TextEditingController();
-   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
 //final controller = Get.find<AuthController>();
-final controller =  Get.put(AuthController());
+  final controller = Get.put(AuthController());
 
-
-   @override
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-            backgroundColor: Get.isDarkMode ? Colors.white: Colors.black
-
+          backgroundColor: Colors.green.shade600,
         ),
         body: SingleChildScrollView(
           child: Form(
@@ -32,7 +30,7 @@ final controller =  Get.put(AuthController());
             child: Column(
               children: [
                 SizedBox(
-                  height: 30,
+                  height: 20,
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -40,17 +38,23 @@ final controller =  Get.put(AuthController());
                     children: [
                       Text(
                         "SIGN",
-                        style: TextStyle(fontSize: 36, color: Colors.green.shade900),
+                        style: TextStyle(
+                            fontSize: 40, color: Colors.green.shade900),
                       ),
                       Text(
                         "UP",
-                        style: TextStyle(fontSize: 36),
+                        style: TextStyle(fontSize: 40),
                       ),
                     ],
                   ),
                 ),
+                // Padding(
+                //   padding: const EdgeInsets.all(8.0),
+                //   child: Image.asset("images/app.jpg",
+                //     ),
+                // ),
                 SizedBox(
-                  height: 70,
+                  height: 80,
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -66,13 +70,11 @@ final controller =  Get.put(AuthController());
                       }
                     },
                     decoration: InputDecoration(
-
-                      prefixIcon: Icon(
-                        Icons.person,
-                        color: Colors.green.shade900,
-                      ),
+                        prefixIcon: Icon(
+                          Icons.person,
+                          color: Colors.green.shade900,
+                        ),
                         hintText: "User Name",
-
                         border: OutlineInputBorder()),
                   ),
                 ),
@@ -91,10 +93,8 @@ final controller =  Get.put(AuthController());
                         return null;
                       }
                     },
-
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
-
                         hintText: "Email",
                         prefixIcon: Icon(
                           Icons.email,
@@ -113,7 +113,7 @@ final controller =  Get.put(AuthController());
                       child: TextFormField(
                         cursorColor: Colors.black,
                         controller: passwordController,
-                        //obscureText: controller.isVisibilty ? false : true,
+                        obscureText: controller.isVisibilty ? false : true,
                         keyboardType: TextInputType.visiblePassword,
                         validator: (value) {
                           if (value.toString().length < 6) {
@@ -124,19 +124,19 @@ final controller =  Get.put(AuthController());
                         },
                         decoration: InputDecoration(
                             hintText: "Password",
-                            // suffixIcon: IconButton(
-                            //     onPressed: () {
-                            //       controller.visibility();
-                            //     },
-                            //     icon: controller.isVisibility
-                            //         ? const Icon(
-                            //       Icons.visibility_off,
-                            //       color: Colors.black,
-                            //     )
-                            //         : const Icon(
-                            //       Icons.visibility,
-                            //       color: Colors.black,
-                            //     )),
+                            suffixIcon: IconButton(
+                                onPressed: () {
+                                  controller.visibility();
+                                },
+                                icon: controller.isVisibilty
+                                    ? const Icon(
+                                        Icons.visibility_off,
+                                        color: Colors.black,
+                                      )
+                                    : const Icon(
+                                        Icons.visibility,
+                                        color: Colors.black,
+                                      )),
                             prefixIcon: Icon(
                               Icons.lock,
                               color: Colors.green.shade900,
@@ -151,45 +151,41 @@ final controller =  Get.put(AuthController());
                 ),
                 CheckWidget(),
                 SizedBox(
-                  height: 10,
+                  height: 30,
                 ),
-                GetBuilder<AuthController>(
-                  builder: (context) {
-                    return ElevatedButton(
-                      onPressed: ()  {
-                        if (controller.isCheckBox == false) {
-                          Get.snackbar(
-                              "Check Box", "Please Accept terms & conditions",
-                            snackPosition: SnackPosition.BOTTOM,
-                            backgroundColor: Colors.green,
-                            colorText: Colors.white,
-                          );
-                        } else if (fromKey.currentState!.validate()) {
-                          String name = nameController.text.trim();
-                          String email = emailController.text.trim();
-                          String password = passwordController.text.trim();
-                          controller.signUpUsingFirebase(
-                              name: name,
-                              email: email,
-                              password: password
-                          );
-                          controller.isCheckBox = true;
-
-                        }
-
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.green.shade600,
-                        padding: EdgeInsets.symmetric(horizontal: 100, vertical: 15),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            side: BorderSide(color: Colors.green.shade900)),
-                        textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      child: Text("Sign up"),
-                    );
-                  }
-                )
+                GetBuilder<AuthController>(builder: (context) {
+                  return ElevatedButton(
+                    onPressed: () {
+                      if (controller.isCheckBox == false) {
+                        Get.snackbar(
+                          "Check Box",
+                          "Please Accept terms & conditions",
+                          snackPosition: SnackPosition.BOTTOM,
+                          backgroundColor: Colors.green,
+                          colorText: Colors.white,
+                        );
+                      } else if (fromKey.currentState!.validate()) {
+                        String name = nameController.text.trim();
+                        String email = emailController.text.trim();
+                        String password = passwordController.text.trim();
+                        controller.signUpUsingFirebase(
+                            name: name, email: email, password: password);
+                        controller.isCheckBox = true;
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.green.shade600,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          side: BorderSide(color: Colors.green.shade900)),
+                      textStyle:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    child: Text("Sign up"),
+                  );
+                })
               ],
             ),
           ),

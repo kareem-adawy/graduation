@@ -15,8 +15,10 @@ class ProfileWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(18.0),
           child: CircleAvatar(
-            radius: 50,
-            backgroundImage: NetworkImage(
+            radius: 80,
+            //backgroundImage: AssetImage("images/koko.jpg"),
+              backgroundImage:
+            NetworkImage(
               authController.displayUserPhoto.value
             )
           ),
@@ -25,6 +27,7 @@ class ProfileWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
+              //"Kareem Adawy",
               controller.capitalize(authController.displayUserName.value),
               style: TextStyle(
                 fontSize: 20,
@@ -32,7 +35,8 @@ class ProfileWidget extends StatelessWidget {
               ),
             ),
             Text(
-              authController.displayUserEmail.value,
+              //"kareeem.adawy@gmail.com",
+             authController.displayUserEmail.value,
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
             ),
           ],

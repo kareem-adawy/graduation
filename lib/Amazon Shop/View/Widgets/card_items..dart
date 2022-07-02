@@ -1,5 +1,6 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:mansour_udemy/Amazon%20Shop/Logic/Controller/cart_controller.dart';
 import 'package:mansour_udemy/Amazon%20Shop/Logic/Controller/product_contoller.dart';
@@ -118,27 +119,47 @@ class CardItems extends StatelessWidget {
                             : Icon(
                                 Icons.favorite_outline,
                                 color: Colors.black,
-                              )),
+                              )
+      ),
 
-                          Badge(
-                        position: BadgePosition.topEnd(top: 0, end: 3),
-                        animationDuration: Duration(milliseconds: 300),
-                        animationType: BadgeAnimationType.slide,
-                        badgeContent: Text(
-                          cartController.quantity().toString(),
-                          // productModels.id
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        child:   IconButton(
-                            onPressed: () {
-                              cartController.addProductToCart(productModels);
-                            },
-                            icon: Icon(Icons.shopping_cart)),
-                          )],
+                        //   Badge(
+                        // position: BadgePosition.topEnd(top: 0, end: 3),
+                        // animationDuration: Duration(milliseconds: 300),
+                        // animationType: BadgeAnimationType.slide,
+                        // badgeContent: Text(
+                        //   cartController.quantity().toString(),
+                        //   // productModels.id
+                        //   style: TextStyle(color: Colors.white),
+                        // ),
+                        // child:   IconButton(
+                        //     onPressed: () {
+                        //       cartController.addProductToCart(productModels);
+                        //     },
+                        //     icon: Icon(Icons.shopping_cart)),
+
+                    //   )
+                     IconButton(
+                        onPressed: () {
+                        cartController.addProductToCart(productModels);
+                        Get.snackbar(
+                            "Successful Add", "The Item Added To Cart Successfully",
+                            snackPosition: SnackPosition.TOP,
+                            backgroundColor: Colors.grey,
+                            colorText: Colors.black);
+
+
+                        // Fluttertoast.showToast(msg: "Success",
+                        // textColor: Colors.red,
+                        // fontSize: 20,
+                        // timeInSecForIosWeb: 4,
+                        // backgroundColor: Colors.black);
+                        },
+                           icon: Icon(Icons.shopping_cart)
+                     ),
+
+         ]
                       ),
-
-
-                ),
+      ),
 
               Container(
                 width: double.infinity,

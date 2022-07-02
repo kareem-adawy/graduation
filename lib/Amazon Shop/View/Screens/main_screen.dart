@@ -23,7 +23,10 @@ class MainScreen extends StatelessWidget {
               appBar: AppBar(
                 elevation: 0,
                 backgroundColor: Colors.green.shade600,
-                 title: Center(child: Text(controller.title[controller.currentIndex.value])),
+                 title: Center(child: Text(controller.title[controller.currentIndex.value],
+                 style: TextStyle(
+                   fontSize: 25
+                 ),)),
                 actions: [
                   Obx(
                       () => Badge(
@@ -48,16 +51,16 @@ class MainScreen extends StatelessWidget {
                 items: [
                   BottomNavigationBarItem(icon: Icon(Icons.home,
                     color: Colors.green.shade600,),
-                    label: "home",),
+                    label: "Home",),
                   BottomNavigationBarItem(icon: Icon(Icons.category,
                     color: Colors.green.shade600,),
-                    label: "category",),
+                    label: "Category",),
                   BottomNavigationBarItem(icon: Icon(Icons.favorite,
                     color: Colors.green.shade600,),
                     label: "Favorites",),
                   BottomNavigationBarItem(icon: Icon(Icons.settings,
                     color: Colors.green.shade600,),
-                    label: "setting",),
+                    label: "Settings",),
                 ],
                 onTap: (index) {
                    controller.currentIndex.value = index;

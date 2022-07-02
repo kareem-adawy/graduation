@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:mansour_udemy/Amazon%20Shop/Logic/Controller/cart_controller.dart';
@@ -30,7 +31,7 @@ class AddCart extends StatelessWidget {
                 color: Colors.grey,
                 height: 1.5
               ),),
-              Text("$price",
+              Text("\$$price",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -56,6 +57,12 @@ class AddCart extends StatelessWidget {
 
                     ), onPressed: () {
                       controller.addProductToCart(productModels);
+                      Get.snackbar(
+                          "Cart Updated", "The Item Added To Cart Successfully",
+                          snackPosition: SnackPosition.TOP,
+                          backgroundColor: Colors.grey,
+                          colorText: Colors.black);
+
                   },
                     child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

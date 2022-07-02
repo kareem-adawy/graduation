@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_simple_rating_bar/flutter_simple_rating_bar.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
@@ -80,25 +80,41 @@ class ClothesInfo extends StatelessWidget {
               SizedBox(
                 width: 8,
               ),
-              RatingBar(
-                rating: rate,
-                icon: Icon(
-                  Icons.star,
-                  size: 20,
-                  color: Colors.grey,
-                ),
-                starCount: 5,
-                spacing: 1,
-                size: 20,
-                isIndicator: false,
-                allowHalfRating: true,
-                onRatingCallback: (value,isIndictor) {
-                  isIndictor.value = true;
-
-                },
-                color: Colors.orangeAccent,
-
-              )
+      RatingBar.builder(
+        initialRating: rate,
+        minRating: 1,
+        itemSize: 25,
+        direction: Axis.horizontal,
+        allowHalfRating: true,
+        itemCount: 5,
+        itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+        itemBuilder: (context, _) => Icon(
+          Icons.star,
+          color: Colors.amber,
+        ),
+        onRatingUpdate: (rating) {
+          print(rating);
+        },
+      )
+              // RatingBar(
+              //   rating: rate,
+              //   icon: Icon(
+              //     Icons.star,
+              //     size: 20,
+              //     color: Colors.grey,
+              //   ),
+              //   starCount: 5,
+              //   spacing: 1,
+              //   size: 20,
+              //   isIndicator: false,
+              //   allowHalfRating: true,
+              //   onRatingCallback: (value,isIndictor) {
+              //     isIndictor.value = true;
+              //
+              //   },
+              //   color: Colors.orangeAccent,
+              //
+              // )
 
 
 
